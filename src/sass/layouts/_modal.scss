@@ -1,0 +1,296 @@
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+
+    background-color: rgba(94, 99, 99, 0.7);
+    ;
+    transition:
+        opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
+        visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 10;
+}
+
+.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.backdrop.is-hidden .modal {
+    
+    transform: scale(0.8) translate(-50%, -50%);
+}
+
+.modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    padding: 32px 20px;
+    height: 494px;
+    background-color: var(--accent-color);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.06);
+    border-radius: 30px;
+
+
+    transform: scale(1) translate(-50%, -50%);
+    transition: transform 250ms $animation-preset;
+
+    @media screen and (max-width: 477px) {
+        max-width: 458px;
+        width: calc(100% - 20px);
+    }
+
+    @media screen and (min-width: 478px) and (max-width: 767px) {
+        max-width: 458px;
+        width: 100%;
+    }
+
+    @media screen and (min-width: 768px) {
+        width: 458px;
+        padding: 32px;
+    }
+}
+
+.modal__close {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 12px;
+    top: 12px;
+
+    width: 32px;
+    height: 32px;
+    border: none;
+    border-radius: 50%;
+    background-color: $white-color;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.06);
+    cursor: pointer;
+    transition:
+        fill 250ms cubic-bezier(0.4, 0, 0.2, 1),
+        box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    &:hover,
+    &:focus {
+        box-shadow:
+            0px 2px 2px rgba(0, 0, 0, 0.06),
+            0px 2px 2px rgba(0, 0, 0, 0.15);
+        fill: $buttons-dark-green;
+    }
+}
+
+.close__icon {
+    min-width: 24px;
+}
+
+.modal__title {
+    margin-bottom: 20px;
+
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 1.2;
+    text-align: center;
+    color: $main-color;
+}
+
+.modal__field {
+    position: relative;
+
+    &:nth-child(-n + 2) {
+        margin-bottom: 6px;
+
+        @media screen and (max-width: 371px) {
+            margin-bottom: 8px;
+        }
+    }
+}
+
+.modal__field--marg {
+    margin-bottom: 51px;
+
+    @media screen and (max-width: 371px) {
+        margin-bottom: 54px;
+    }
+}
+
+.input__title {
+    display: block;
+    margin-left: 12px;
+
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.4;
+    color: $main-color;
+    margin-bottom: 2px;
+}
+
+.error--first::after {
+    content: 'fill the field correctly';
+    position: absolute;
+    background-image: url(/src/images/error.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 5px;
+    width: 165px;
+    height: 54px;
+    top: 284px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 6;
+    color: #FAEDEB;
+    font-size: 13px;
+}
+
+.error--second::after {
+    content: 'fill the field correctly';
+    position: absolute;
+    background-image: url(/src/images/error.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 5px;
+    width: 165px;
+    height: 54px;
+    top: 186px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
+    color: #FAEDEB;
+    font-size: 13px;
+}
+
+.error--third::after {
+    content: 'fill the field correctly';
+    position: absolute;
+    background-image: url(/src/images/error.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 5px;
+
+    width: 165px;
+    height: 54px;
+    top: 89px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 4;
+    color: #FAEDEB;
+    font-size: 13px;
+}
+
+.modal__input {
+    position: relative;
+    width: 100%;
+    height: 48px;
+    color: $main-color;
+
+    font-size: 16px;
+    line-height: 1.25;
+    border: 1px solid rgba(18, 18, 18, 0.12);
+    border-radius: 30px;
+    padding-left: 12px;
+    box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.15);
+    outline: transparent;
+    cursor: pointer;
+    transition:
+        border-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+        box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    &::placeholder {
+        color: #C4C4C4;
+    }
+
+    &:focus,
+    &:hover {
+        border-color: $accent-color;
+        box-shadow:
+            inset 0px 2px 4px rgba(0, 0, 0, 0.06),
+            inset 0px 2px 4px rgba(0, 0, 0, 0.15);
+    }
+}
+
+.error {
+    display: flex;
+    align-items: baseline;
+    opacity: 0;
+    margin-left: 12px;
+    margin-top: 1px;
+
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 1.4;
+    color: var(--invalid-color);
+
+    transition:
+        opacity 300ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    @media screen and (max-width: 371px) {
+        margin-left: 8px;
+        font-size: 10px;
+    }
+}
+
+.modal__input:not(:placeholder-shown):not(:focus):valid {
+    border-color: var(--buttons-dark-green);
+}
+
+.modal__input:not(:placeholder-shown):not(:focus):invalid {
+    border-color: var(--invalid-color);
+}
+
+.modal__input:not(:placeholder-shown):not(:focus):invalid+.error {
+    opacity: 1;
+}
+
+.modal__btn {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+
+    padding: 10px 38px;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--main-color);
+
+    background-color: var(--white-color);
+    border: 2px solid var(--buttons-dark-green);
+    border-radius: 30px;
+    cursor: pointer;
+    transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    &:hover,
+    &:focus {
+        box-shadow:
+            0px 2px 2px rgba(0, 0, 0, 0.06),
+            0px 2px 2px rgba(0, 0, 0, 0.15);
+    }
+
+}
+
+.modal__btn--border {
+    border-color: red;
+}
+
+.modal__btn--success {
+    background-color: greenyellow;
+}
+.eror-ico{
+    display: flex;
+    margin-right: 4px;
+}

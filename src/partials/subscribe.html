@@ -1,0 +1,49 @@
+<section class="subscribe">
+  <div class="container">
+    <picture>
+      <source
+        srcset="./images/des-banan-608.png 1x, ./images/des-banan-1216.png 2x"
+        media="(min-width: 1280px)"
+        width="608"
+      />
+      <source
+        srcset="./images/tab-banan-281.png 1x, ./images/tab-banan-562.png 2x"
+        media="(min-width: 768px)"
+        width="281"
+      />
+      <source
+        srcset="./images/mob-banan-280.png 1x, ./images/mob-banan-560.png 2x"
+        media="(max-width: 767px)"
+        width="280"
+      />
+
+      <img
+        class="subscribe__banana"
+        src="./images/mob-banan-280.png"
+        alt="banana"
+        
+      />
+    </picture>
+    <h2 class="subscribe__title" id="contact" data-aos="zoom-out-right"
+    data-aos-easing="linear"
+    data-aos-duration="750">
+      Subscribe To Get Special Offers
+    </h2>
+    <p class="subscribe__pre-title">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+      varius enim in eros elementum tristique.
+    </p>
+    <div class="subscribe__container">
+      <input
+        id="email"
+        class="subscribe__input-email"
+        type="email"
+        name="email"
+        required
+        placeholder="Enter your email"
+      />
+      <label for="email"></label>
+      <button class="subscribe__button btn--focus" type="button">Subscribe</button>
+    </div>
+  </div>
+</section>
